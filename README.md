@@ -1,4 +1,4 @@
-# New Project Template VBA
+# New Project Template Macro
 
 ## Overview
 
@@ -8,11 +8,10 @@ This VBA project template provides a base for creating macros in Excel.
 
 The purpose of this template is to provide a starting point with basic components, such as message boxes, timing, screen updating, and formatting.
 
-
-## Usage
+## Customization
 
 1. Copy and paste this code into your VBA editor.
-2. Modify the parameters passed to the `Formatting_Example` macro in the `Template_Macro` subroutine (range to edit and table name to use). 
+2. Modify the parameters passed to `Formatting_Example` within the `Template_Macro` subroutine (range to edit and table name to apply). 
 - Example: `Formatting_Example "A1:C10", "tableName"`
 3. Customize the `Formatting_Example` subroutine to perform the desired tasks.
 
@@ -25,6 +24,6 @@ The purpose of this template is to provide a starting point with basic component
 - **ScreenUpdating:** Controls the screen updating feature to improve macro performance.
 - **Formatting_Example:** Example subroutine for formatting Excel data. 
 
-## Notes
+## Additional Notes
 
-- Feel free to expand upon or modify this template to accommodate additional functionality or specific project needs.
+- Expand upon this template to accommodate your project needs.
