@@ -1,0 +1,88 @@
+Sub Template_Macro()
+
+    If Confirmation_MsgBox = vbYes Then
+    
+        ' Start timing process
+        Dim StartTime As Double
+        StartTime = Timer
+        
+        ' Remove screen update
+        ScreenUpdating (False)
+        
+            ' Actions to execute
+            Formatting_Example "A1:C10", "tableName"
+
+        ' Remove screen update    
+        ScreenUpdating (True)
+        
+        ' Finish timing process
+        Dim EndTime As Double
+        EndTime = Timer
+        
+        ' Calculate total execution time
+        Dim totalTime As Double
+        totalTime = EndTime - StartTime
+        
+        ' Success Msg Box
+        Success_MsgBox totalTime
+        
+    Else
+        
+        ' Macro not run Msg Box
+        Withdrawal_MsgBox
+    
+    End If
+
+End Sub
+Private Function Confirmation_MsgBox() As VbMsgBoxResult
+    ' Ask for confirmation before proceeding with macro
+    Confirmation_MsgBox = MsgBox("Would you like to run this macro?", _
+                        vbYesNo + vbQuestion, _
+                        "Confirm Run")
+    
+End Function
+Private Sub Withdrawal_MsgBox()
+    ' Withdrawal Msg Box if macro is not run
+    MsgBox "Macro was not run.", vbInformation, "Ending Process"
+    
+End Sub
+Private Sub Success_MsgBox(value As Double)
+    ' Success Msg Box with Execution time if macro is run
+        MsgBox "Execution Time: " & Format(Int(value / 60), "00") & ":" & Format(value Mod 60, "00") & " (mm:ss)", _
+        vbInformation, _
+        "Success! :)"
+    
+End Sub
+Private Sub ScreenUpdating(status As Boolean)
+    ' Screen updating subroutine
+        Application.ScreenUpdating = status
+
+End Sub
+Private Sub Formatting_Example(tableRange, tableName As String)
+    ' Formatting subroutine example with main features
+
+    ' Create main variables
+    Dim ws As Worksheet
+    Dim targetRange As Range
+
+    ' Set active sheet
+    Set ws = ActiveSheet
+    
+    ' Setting main variables
+    targetRange = ws.Range(tableRange)
+        
+    ' Convert range to table
+    ws.ListObjects.Add(xlSrcRange, targetRange, , xlYes).Name = tableName
+    
+    ' Add other features
+        ' Removing gridlines
+        ' ActiveWindow.DisplayGridlines = False
+        
+        ' Freezing panes
+        ' Range("E4").Select 
+        ' ActiveWindow.FreezePanes = True
+        
+        ' Renaming sheet to "Report"
+        ' ws.Name = "Report" 
+    
+End Sub
